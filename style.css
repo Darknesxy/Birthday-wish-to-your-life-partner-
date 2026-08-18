@@ -1,0 +1,3688 @@
+/* =====================================================
+   PRINCESS — BIRTHDAY WEBSITE
+   PREMIUM CINEMATIC CSS
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    font-family: "Inter", sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(153, 100, 255, .20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(255, 105, 180, .12),
+            transparent 30%
+        ),
+        #05050d;
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+#starCanvas {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+#hearts {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+#loader {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #19102b,
+            #05050d 70%
+        );
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+#loader.hide {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+.loader-box {
+    width: min(500px, 92vw);
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.5);
+}
+
+.loader-crown {
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+    animation:
+        floatCrown 2.5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255,220,120,.5)
+        );
+}
+
+.loader-box h2 {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+.loader-box p {
+    color: rgba(255,255,255,.60);
+
+    font-size: 13px;
+
+    margin-bottom: 22px;
+}
+
+.loader-line {
+    width: 100%;
+
+    height: 4px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+#loaderBar {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9d7cff,
+            #ff83c8
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(255,131,200,.7);
+
+    transition:
+        width .15s linear;
+}
+
+#loaderPercent {
+    display: block;
+
+    margin-top: 12px;
+
+    color: rgba(255,255,255,.55);
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   MAIN APP
+===================================================== */
+
+#app {
+    position: relative;
+
+    width: 100%;
+    height: 100dvh;
+
+    z-index: 2;
+}
+
+
+/* =====================================================
+   PAGE SYSTEM
+===================================================== */
+
+.page {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100dvh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding:
+        30px 18px 70px;
+
+    overflow-y: auto;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        scale(.96)
+        translateY(25px);
+
+    transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.2,.8,.2,1),
+        visibility .75s;
+}
+
+.page.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+/* =====================================================
+   GLASS CARD
+===================================================== */
+
+.glass-card {
+    position: relative;
+
+    width: min(720px, 94vw);
+
+    padding: 48px 32px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.5);
+
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -170px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,131,200,.18);
+
+    filter: blur(50px);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   PAGE CONTENT
+===================================================== */
+
+.page-content {
+    width: min(1000px, 96vw);
+
+    text-align: center;
+}
+
+.final-content {
+    width: min(1000px, 96vw);
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+
+h1,
+h2 {
+    position: relative;
+
+    z-index: 2;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 600;
+}
+
+h1 {
+    font-size:
+        clamp(55px, 11vw, 110px);
+
+    line-height: .88;
+
+    letter-spacing:
+        -.035em;
+}
+
+h2 {
+    font-size:
+        clamp(42px, 8vw, 76px);
+
+    line-height: .95;
+}
+
+h1 span {
+    color: #ff83c8;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,131,200,.35);
+}
+
+.description {
+    max-width: 570px;
+
+    margin:
+        25px auto;
+
+    color:
+        rgba(255,255,255,.67);
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+.small-title {
+    margin-bottom: 10px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    text-transform: uppercase;
+
+    letter-spacing: .25em;
+
+    font-size: 10px;
+}
+
+.badge {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding:
+        7px 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 100px;
+
+    color: #ffe7a3;
+
+    background:
+        rgba(255,255,255,.04);
+
+    letter-spacing: .18em;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   CROWN
+===================================================== */
+
+.crown,
+.final-crown {
+    font-size: 80px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(255,220,120,.45)
+        );
+
+    animation:
+        floatCrown 3s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button {
+    font-family:
+        "Inter",
+        sans-serif;
+
+    color: white;
+
+    cursor: pointer;
+
+    border: none;
+
+    outline: none;
+}
+
+.main-btn,
+.option-btn,
+.next-btn {
+    position: relative;
+
+    min-height: 50px;
+
+    padding:
+        13px 24px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius: 100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,131,200,.17),
+            rgba(157,124,255,.17)
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.main-btn {
+    margin-top: 15px;
+}
+
+.main-btn:hover,
+.option-btn:hover,
+.next-btn:hover {
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 45px
+        rgba(255,131,200,.18);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,131,200,.25),
+            rgba(157,124,255,.25)
+        );
+}
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.option-btn {
+    min-width: 150px;
+}
+
+#noBtn {
+    transition:
+        left .2s ease,
+        top .2s ease,
+        transform .2s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =====================================================
+   CHALLENGE
+===================================================== */
+
+#question {
+    margin:
+        30px auto 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+}
+
+#answers {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+#answerMessage,
+#teaseMessage {
+    min-height: 30px;
+
+    margin-top: 20px;
+
+    color: #ffc2e5;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   FOUR YEARS
+===================================================== */
+
+.big-number {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        min(40vw, 320px);
+
+    line-height: .7;
+
+    color: transparent;
+
+    background:
+        linear-gradient(
+            180deg,
+            white,
+            #ff83c8,
+            #9d7cff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    filter:
+        drop-shadow(
+            0 0 40px
+            rgba(255,131,200,.15)
+        );
+
+    animation:
+        slowPulse 4s ease-in-out infinite;
+}
+
+.counter {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin:
+        30px 0 10px;
+}
+
+.counter > div {
+    min-width: 90px;
+
+    padding: 15px 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+.counter strong {
+    display: block;
+
+    font-size: 24px;
+}
+
+.counter span {
+    display: block;
+
+    margin-top: 5px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   MEMORIES — PREMIUM ANIMATED GALLERY
+===================================================== */
+
+.memory-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    width:
+        min(900px, 94vw);
+
+    margin:
+        35px auto;
+
+    perspective:
+        1200px;
+}
+
+
+/* =====================================================
+   MEMORY CARD
+===================================================== */
+
+.memory-card {
+
+    position: relative;
+
+    aspect-ratio:
+        1 / 1.18;
+
+    overflow:
+        hidden;
+
+    cursor:
+        pointer;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius:
+        27px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,.28);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(30px)
+        scale(.94);
+
+    animation:
+        memoryAppear
+        .8s cubic-bezier(.2,.8,.2,1)
+        forwards;
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .45s ease,
+        border-color .45s ease;
+}
+
+
+/* =====================================================
+   STAGGERED ENTRANCE
+===================================================== */
+
+.memory-card:nth-child(1) {
+    animation-delay: .10s;
+}
+
+.memory-card:nth-child(2) {
+    animation-delay: .20s;
+}
+
+.memory-card:nth-child(3) {
+    animation-delay: .30s;
+}
+
+.memory-card:nth-child(4) {
+    animation-delay: .40s;
+}
+
+.memory-card:nth-child(5) {
+    animation-delay: .50s;
+}
+
+.memory-card:nth-child(6) {
+    animation-delay: .60s;
+}
+
+
+@keyframes memoryAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.92)
+            rotateX(8deg);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotateX(0);
+    }
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.memory-card img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    transform:
+        scale(1.01);
+
+    filter:
+        brightness(.9)
+        saturate(1.05);
+
+    transition:
+        transform .8s cubic-bezier(.2,.8,.2,1),
+        filter .6s ease;
+}
+
+
+.memory-card:hover img {
+
+    transform:
+        scale(1.12);
+
+    filter:
+        brightness(.78)
+        saturate(1.15);
+}
+
+
+/* =====================================================
+   HOVER CARD
+===================================================== */
+
+.memory-card:hover {
+
+    transform:
+        translateY(-12px)
+        scale(1.025)
+        rotateX(2deg);
+
+    border-color:
+        rgba(255,255,255,.38);
+
+    box-shadow:
+        0 30px 70px
+        rgba(0,0,0,.45),
+
+        0 0 35px
+        rgba(255,131,200,.08);
+}
+
+
+/* =====================================================
+   CINEMATIC OVERLAY
+===================================================== */
+
+.memory-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    padding:
+        20px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.92) 0%,
+            rgba(0,0,0,.60) 25%,
+            rgba(0,0,0,.18) 55%,
+            transparent 75%
+        );
+
+    pointer-events:
+        none;
+
+    transition:
+        background .5s ease;
+}
+
+
+.memory-card:hover .memory-overlay {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.94) 0%,
+            rgba(0,0,0,.55) 30%,
+            rgba(0,0,0,.12) 65%,
+            transparent 80%
+        );
+}
+
+
+/* =====================================================
+   MEMORY TITLE
+===================================================== */
+
+.memory-title {
+
+    position:
+        relative;
+
+    text-align:
+        left;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            21px,
+            3vw,
+            28px
+        );
+
+    font-weight:
+        600;
+
+    line-height:
+        1.1;
+
+    text-shadow:
+        0 4px 15px
+        rgba(0,0,0,.8);
+
+    transform:
+        translateY(8px);
+
+    opacity:
+        .9;
+
+    transition:
+        transform .4s ease,
+        opacity .4s ease;
+}
+
+
+.memory-card:hover .memory-title {
+
+    transform:
+        translateY(0);
+
+    opacity:
+        1;
+}
+
+
+/* =====================================================
+   MEMORY GLOW
+===================================================== */
+
+.memory-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        160px;
+
+    height:
+        160px;
+
+    top:
+        -90px;
+
+    right:
+        -70px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,131,200,.16);
+
+    filter:
+        blur(30px);
+
+    z-index:
+        2;
+
+    pointer-events:
+        none;
+
+    transition:
+        transform .6s ease;
+}
+
+
+.memory-card:hover::before {
+
+    transform:
+        scale(1.6);
+}
+
+
+/* =====================================================
+   SHINE EFFECT
+===================================================== */
+
+.memory-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        -120%;
+
+    left:
+        -60%;
+
+    width:
+        45%;
+
+    height:
+        260%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    transform:
+        rotate(20deg);
+
+    pointer-events:
+        none;
+
+    z-index:
+        4;
+}
+
+
+.memory-card:hover::after {
+
+    animation:
+        memoryShine
+        .9s ease;
+}
+
+
+@keyframes memoryShine {
+
+    from {
+        left:
+            -60%;
+    }
+
+    to {
+        left:
+            150%;
+    }
+}
+
+
+/* =====================================================
+   DISCOVERED MEMORY
+===================================================== */
+
+.memory-card[data-opened="true"] {
+
+    border-color:
+        rgba(255,194,229,.45);
+
+    box-shadow:
+        0 25px 65px
+        rgba(0,0,0,.42),
+
+        0 0 30px
+        rgba(255,194,229,.08);
+}
+
+
+.memory-card[data-opened="true"] img {
+
+    filter:
+        brightness(.92)
+        saturate(1.15);
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+#memoryProgress,
+#starProgress {
+
+    display:
+        inline-block;
+
+    margin:
+        10px auto;
+
+    padding:
+        7px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        .06em;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .memory-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            14px;
+
+        width:
+            94vw;
+    }
+
+    .memory-card {
+
+        border-radius:
+            22px;
+    }
+
+    .memory-overlay {
+
+        padding:
+            15px;
+    }
+
+    .memory-title {
+
+        font-size:
+            22px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .memory-grid {
+
+        gap:
+            10px;
+    }
+
+    .memory-card {
+
+        aspect-ratio:
+            1 / 1.15;
+
+        border-radius:
+            18px;
+    }
+
+    .memory-overlay {
+
+        padding:
+            11px;
+    }
+
+    .memory-title {
+
+        font-size:
+            18px;
+    }
+
+    #memoryProgress {
+
+        font-size:
+            11px;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .memory-card {
+
+        animation:
+            none;
+
+        opacity:
+            1;
+
+        transform:
+            none;
+    }
+
+    .memory-card::after {
+
+        animation:
+            none !important;
+    }
+
+}
+
+/* =====================================================
+   LOVE NOTES — FULL ANIMATED PREMIUM
+===================================================== */
+
+.notes-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+    width: min(900px, 94vw);
+
+    margin: 35px auto;
+
+    perspective: 1200px;
+}
+
+
+/* =====================================================
+   NOTE CARD
+===================================================== */
+
+.note-card {
+    position: relative;
+
+    min-height: 190px;
+
+    padding: 28px;
+
+    text-align: left;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.28);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    cursor: pointer;
+
+    transform:
+        translateY(25px)
+        scale(.96);
+
+    opacity: 0;
+
+    animation:
+        noteAppear
+        .8s cubic-bezier(.2,.8,.2,1)
+        forwards;
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .45s ease,
+        border-color .45s ease,
+        background .45s ease;
+}
+
+
+/* =====================================================
+   STAGGERED ENTRANCE
+===================================================== */
+
+.note-card:nth-child(1) {
+    animation-delay: .10s;
+}
+
+.note-card:nth-child(2) {
+    animation-delay: .20s;
+}
+
+.note-card:nth-child(3) {
+    animation-delay: .30s;
+}
+
+.note-card:nth-child(4) {
+    animation-delay: .40s;
+}
+
+.note-card:nth-child(5) {
+    animation-delay: .50s;
+}
+
+.note-card:nth-child(6) {
+    animation-delay: .60s;
+}
+
+
+@keyframes noteAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.94)
+            rotateX(8deg);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotateX(0);
+    }
+}
+
+
+/* =====================================================
+   FLOATING GLOW
+===================================================== */
+
+.note-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    top: -100px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 100, 190, .16);
+
+    filter:
+        blur(30px);
+
+    animation:
+        noteGlow
+        4s ease-in-out
+        infinite alternate;
+
+    pointer-events: none;
+}
+
+
+@keyframes noteGlow {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(.9);
+    }
+
+    100% {
+        transform:
+            translate(-25px, 25px)
+            scale(1.25);
+    }
+}
+
+
+/* =====================================================
+   MOVING SHINE
+===================================================== */
+
+.note-card .note-shine {
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.10),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    pointer-events: none;
+}
+
+
+.note-card:hover .note-shine {
+    animation:
+        noteShine
+        .9s ease;
+}
+
+
+@keyframes noteShine {
+
+    from {
+        left: -120%;
+    }
+
+    to {
+        left: 150%;
+    }
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.note-card:hover {
+
+    transform:
+        translateY(-12px)
+        scale(1.02)
+        rotateX(2deg);
+
+    border-color:
+        rgba(255, 194, 229, .42);
+
+    box-shadow:
+        0 30px 70px
+        rgba(0, 0, 0, .42),
+
+        0 0 35px
+        rgba(255, 131, 200, .08);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.13),
+            rgba(255,131,200,.07)
+        );
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.note-card span {
+
+    position: relative;
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,231,163,.28);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255,231,163,.06);
+
+    color:
+        #ffe7a3;
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        .18em;
+
+    text-transform:
+        uppercase;
+
+    animation:
+        labelPulse
+        3s ease-in-out
+        infinite;
+}
+
+
+@keyframes labelPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0
+            rgba(255,231,163,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 15px
+            rgba(255,231,163,.10);
+    }
+}
+
+
+/* =====================================================
+   NOTE TEXT
+===================================================== */
+
+.note-card p {
+
+    position: relative;
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            22px,
+            3vw,
+            29px
+        );
+
+    line-height:
+        1.25;
+
+    transition:
+        color .35s ease,
+        transform .35s ease;
+}
+
+
+.note-card:hover p {
+
+    color:
+        #ffffff;
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =====================================================
+   CORNER HEART
+===================================================== */
+
+.note-card::after {
+
+    content:
+        "♡";
+
+    position:
+        absolute;
+
+    right:
+        20px;
+
+    bottom:
+        14px;
+
+    color:
+        rgba(255,194,229,.35);
+
+    font-size:
+        36px;
+
+    transition:
+        transform .4s ease,
+        color .4s ease;
+}
+
+
+.note-card:hover::after {
+
+    content:
+        "♥";
+
+    color:
+        rgba(255,194,229,.85);
+
+    transform:
+        scale(1.25)
+        rotate(-10deg);
+
+    animation:
+        heartBeat
+        .8s ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes heartBeat {
+
+    from {
+        transform:
+            scale(1.1)
+            rotate(-8deg);
+    }
+
+    to {
+        transform:
+            scale(1.35)
+            rotate(8deg);
+    }
+}
+
+
+/* =====================================================
+   REVEAL MESSAGE
+===================================================== */
+
+.note-reveal {
+
+    width:
+        min(680px, 90vw);
+
+    min-height:
+        55px;
+
+    margin:
+        25px auto;
+
+    padding:
+        14px 20px;
+
+    color:
+        #ffc2e5;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            20px,
+            3vw,
+            26px
+        );
+
+    line-height:
+        1.4;
+
+    text-align:
+        center;
+
+    text-shadow:
+        0 4px 18px
+        rgba(255,131,200,.25);
+
+    animation:
+        revealFloat
+        3s ease-in-out
+        infinite;
+}
+
+
+@keyframes revealFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-4px);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .notes-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            15px;
+
+        width:
+            94vw;
+
+        margin:
+            28px auto;
+    }
+
+    .note-card {
+
+        min-height:
+            170px;
+
+        padding:
+            24px;
+
+        border-radius:
+            23px;
+    }
+
+    .note-card p {
+
+        font-size:
+            24px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .note-card {
+
+        min-height:
+            155px;
+
+        padding:
+            20px;
+
+        border-radius:
+            20px;
+    }
+
+    .note-card span {
+
+        font-size:
+            9px;
+    }
+
+    .note-card p {
+
+        font-size:
+            21px;
+    }
+
+    .note-card::after {
+
+        right:
+            14px;
+
+        bottom:
+            10px;
+
+        font-size:
+            29px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .note-card,
+    .note-card::before,
+    .note-card span,
+    .note-reveal {
+
+        animation:
+            none;
+    }
+
+    .note-card {
+
+        opacity:
+            1;
+
+        transform:
+            none;
+    }
+
+}
+
+/* =====================================================
+   CONSTELLATION
+===================================================== */
+
+.constellation {
+    position: relative;
+
+    width: min(800px, 95vw);
+
+    height: 420px;
+
+    margin:
+        25px auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(157,124,255,.12),
+            transparent 65%
+        );
+}
+
+.star {
+    position: absolute;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px 4px white,
+        0 0 35px 8px
+        rgba(157,124,255,.6);
+
+    cursor: pointer;
+
+    animation:
+        twinkle 1.5s ease-in-out infinite alternate;
+
+    transition:
+        transform .3s ease;
+}
+
+.star:hover {
+    transform: scale(1.8);
+}
+
+#starMessage {
+    min-height: 35px;
+
+    color:
+        #ffc2e5;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   GAME
+===================================================== */
+
+.game-area {
+    position: relative;
+
+    width: min(650px, 90vw);
+
+    height: 450px;
+
+    margin:
+        25px auto 15px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.game-heart {
+    position: absolute;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    animation:
+        heartAppear 1.5s ease-out forwards;
+}
+
+#gameScore {
+    color:
+        #ffe7a3;
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music-disc {
+    width: 130px;
+    height: 130px;
+
+    margin:
+        10px auto 25px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    font-size: 48px;
+
+    background:
+        radial-gradient(
+            circle,
+            white 0 5%,
+            #28252e 6% 45%,
+            #0d0d12 46%
+        );
+
+    box-shadow:
+        0 0 60px
+        rgba(255,131,200,.18);
+
+    animation:
+        spinDisc 7s linear infinite;
+
+    animation-play-state: paused;
+}
+
+.music-disc.playing {
+    animation-play-state: running;
+}
+
+/* =====================================================
+   CAKE PAGE — PREMIUM BIRTHDAY EXPERIENCE
+===================================================== */
+
+#cake {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   PAGE BACKGROUND
+===================================================== */
+
+.cake-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 15px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255, 105, 190, .12),
+            transparent 35%
+        );
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.cake-card {
+
+    position: relative;
+
+    width:
+        min(720px, 94vw);
+
+    padding:
+        40px 25px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius:
+        34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.45);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    animation:
+        cakeCardAppear
+        1s cubic-bezier(.2,.8,.2,1);
+}
+
+
+@keyframes cakeCardAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   SUBTITLE
+===================================================== */
+
+.cake-subtitle {
+
+    margin-top:
+        10px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        .08em;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.cake-card h2 {
+
+    margin:
+        15px 0 5px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            38px,
+            7vw,
+            62px
+        );
+
+    line-height:
+        .95;
+
+    text-shadow:
+        0 10px 35px
+        rgba(255,131,200,.2);
+
+    animation:
+        titleFloat
+        4s ease-in-out
+        infinite;
+}
+
+
+.cake-card h2 span {
+
+    color:
+        #ffc2e5;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,194,229,.35);
+}
+
+
+@keyframes titleFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-4px);
+    }
+}
+
+
+/* =====================================================
+   CAKE SCENE
+===================================================== */
+
+.cake-scene {
+
+    position:
+        relative;
+
+    width:
+        min(440px, 90vw);
+
+    height:
+        330px;
+
+    margin:
+        15px auto 0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+}
+
+
+/* =====================================================
+   CAKE GLOW
+===================================================== */
+
+.cake-glow {
+
+    position:
+        absolute;
+
+    width:
+        260px;
+
+    height:
+        180px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,105,190,.15);
+
+    filter:
+        blur(35px);
+
+    animation:
+        cakeGlow
+        3s ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes cakeGlow {
+
+    from {
+        transform:
+            scale(.9);
+
+        opacity:
+            .5;
+    }
+
+    to {
+        transform:
+            scale(1.2);
+
+        opacity:
+            .9;
+    }
+}
+
+
+/* =====================================================
+   CAKE
+===================================================== */
+
+.cake {
+
+    position:
+        relative;
+
+    width:
+        260px;
+
+    height:
+        220px;
+
+    animation:
+        cakeFloat
+        4s ease-in-out
+        infinite;
+}
+
+
+@keyframes cakeFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+/* =====================================================
+   PLATE
+===================================================== */
+
+.cake-plate {
+
+    position:
+        absolute;
+
+    bottom:
+        5px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        285px;
+
+    height:
+        24px;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,.9),
+            rgba(210,190,230,.45)
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.35);
+}
+
+
+/* =====================================================
+   CAKE BODY
+===================================================== */
+
+.cake-body {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        28px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        235px;
+
+    height:
+        125px;
+
+    border-radius:
+        18px 18px 25px 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d878b0,
+            #f5a8d1 45%,
+            #d878b0
+        );
+
+    box-shadow:
+        inset 0 -12px 0
+        rgba(100,20,70,.15),
+
+        0 20px 35px
+        rgba(0,0,0,.28);
+
+    overflow:
+        hidden;
+
+    animation:
+        cakePulse
+        3s ease-in-out
+        infinite;
+}
+
+
+@keyframes cakePulse {
+
+    0%,
+    100% {
+        box-shadow:
+            inset 0 -12px 0
+            rgba(100,20,70,.15),
+            0 20px 35px
+            rgba(0,0,0,.28);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 -12px 0
+            rgba(100,20,70,.12),
+            0 22px 45px
+            rgba(255,105,190,.18);
+    }
+}
+
+
+/* =====================================================
+   CAKE LAYERS
+===================================================== */
+
+.cake-layer {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    height:
+        10px;
+
+    background:
+        rgba(255,235,248,.6);
+
+    border-radius:
+        50%;
+}
+
+
+.layer-1 {
+    top:
+        42px;
+}
+
+
+.layer-2 {
+    top:
+        82px;
+}
+
+
+/* =====================================================
+   CAKE DECORATION
+===================================================== */
+
+.cake-decoration {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        17px;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        rgba(255,255,255,.8);
+
+    font-size:
+        15px;
+
+    letter-spacing:
+        12px;
+
+    white-space:
+        nowrap;
+
+    animation:
+        decorationGlow
+        2s ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes decorationGlow {
+
+    from {
+        opacity:
+            .55;
+    }
+
+    to {
+        opacity:
+            1;
+
+        text-shadow:
+            0 0 12px
+            rgba(255,255,255,.7);
+    }
+}
+
+
+/* =====================================================
+   CAKE TOP / ICING
+===================================================== */
+
+.cake-top {
+
+    position:
+        absolute;
+
+    z-index:
+        3;
+
+    left:
+        50%;
+
+    bottom:
+        130px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        245px;
+
+    height:
+        55px;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff0fa,
+            #ffc9e7
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.2);
+}
+
+
+/* =====================================================
+   ICING DRIPS
+===================================================== */
+
+.icing-drip {
+
+    position:
+        absolute;
+
+    bottom:
+        -18px;
+
+    width:
+        22px;
+
+    height:
+        30px;
+
+    border-radius:
+        0 0 15px 15px;
+
+    background:
+        #ffc9e7;
+}
+
+
+.drip-1 {
+    left:
+        35px;
+}
+
+
+.drip-2 {
+    left:
+        85px;
+
+    height:
+        22px;
+}
+
+
+.drip-3 {
+    right:
+        75px;
+
+    height:
+        28px;
+}
+
+
+.drip-4 {
+    right:
+        30px;
+
+    height:
+        20px;
+}
+
+
+/* =====================================================
+   CANDLE
+===================================================== */
+
+.candle {
+
+    position:
+        absolute;
+
+    z-index:
+        5;
+
+    left:
+        50%;
+
+    bottom:
+        165px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =====================================================
+   CANDLE BODY
+===================================================== */
+
+.candle-body {
+
+    width:
+        25px;
+
+    height:
+        75px;
+
+    border-radius:
+        8px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #fff,
+            #fff 7px,
+            #ffc2e5 7px,
+            #ffc2e5 14px
+        );
+
+    box-shadow:
+        0 4px 15px
+        rgba(255,131,200,.25);
+}
+
+
+/* =====================================================
+   FLAME
+===================================================== */
+
+.flame {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        -48px;
+
+    width:
+        30px;
+
+    height:
+        48px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50% 50% 50% 50%;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            #fff7a8 0%,
+            #ffd45c 35%,
+            #ff9d4d 65%,
+            transparent 70%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255,196,70,.9)
+        );
+
+    animation:
+        flameDance
+        .7s ease-in-out
+        infinite alternate;
+}
+
+
+.flame span {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        5px;
+
+    width:
+        11px;
+
+    height:
+        22px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50%;
+
+    background:
+        #fffbd0;
+}
+
+
+@keyframes flameDance {
+
+    from {
+        transform:
+            translateX(-50%)
+            rotate(-5deg)
+            scale(.9);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            rotate(5deg)
+            scale(1.08);
+    }
+}
+
+
+/* =====================================================
+   SPARKLES
+===================================================== */
+
+.cake-sparkle {
+
+    position:
+        absolute;
+
+    z-index:
+        6;
+
+    color:
+        #ffe7a3;
+
+    font-size:
+        22px;
+
+    animation:
+        sparkleFloat
+        2.5s ease-in-out
+        infinite alternate;
+}
+
+
+.sparkle-1 {
+    left:
+        18%;
+
+    top:
+        35%;
+}
+
+
+.sparkle-2 {
+    right:
+        18%;
+
+    top:
+        30%;
+
+    animation-delay:
+        .5s;
+}
+
+
+.sparkle-3 {
+    left:
+        25%;
+
+    bottom:
+        20%;
+
+    animation-delay:
+        1s;
+}
+
+
+.sparkle-4 {
+    right:
+        25%;
+
+    bottom:
+        22%;
+
+    color:
+        #ffc2e5;
+
+    animation-delay:
+        1.5s;
+}
+
+
+@keyframes sparkleFloat {
+
+    0% {
+        opacity:
+            .25;
+
+        transform:
+            translateY(8px)
+            scale(.7)
+            rotate(0);
+    }
+
+    100% {
+        opacity:
+            1;
+
+        transform:
+            translateY(-12px)
+            scale(1.25)
+            rotate(20deg);
+    }
+}
+
+
+/* =====================================================
+   CAKE MESSAGE
+===================================================== */
+
+.cake-message {
+
+    margin:
+        -5px auto 20px;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            22px,
+            4vw,
+            29px
+        );
+
+    line-height:
+        1.35;
+
+    animation:
+        messageFloat
+        3s ease-in-out
+        infinite;
+}
+
+
+.cake-message span {
+
+    color:
+        #ffc2e5;
+
+    font-size:
+        .85em;
+}
+
+
+@keyframes messageFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-3px);
+    }
+}
+
+
+/* =====================================================
+   WISH BUTTON
+===================================================== */
+
+.wish-btn {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    min-width:
+        220px;
+
+    animation:
+        wishPulse
+        2.2s ease-in-out
+        infinite;
+}
+
+
+@keyframes wishPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 10px 30px
+            rgba(255,105,190,.12);
+    }
+
+    50% {
+        box-shadow:
+            0 10px 35px
+            rgba(255,105,190,.28);
+    }
+}
+
+
+/* =====================================================
+   WISH HINT
+===================================================== */
+
+.wish-hint {
+
+    margin-top:
+        14px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        .05em;
+}
+
+
+/* =====================================================
+   FLOATING PAGE PARTICLES
+===================================================== */
+
+.cake-particle {
+
+    position:
+        absolute;
+
+    color:
+        rgba(255,194,229,.5);
+
+    font-size:
+        20px;
+
+    pointer-events:
+        none;
+
+    animation:
+        pageParticle
+        5s ease-in-out
+        infinite alternate;
+}
+
+
+.particle-1 {
+    left:
+        8%;
+
+    top:
+        18%;
+}
+
+
+.particle-2 {
+    left:
+        15%;
+
+    bottom:
+        20%;
+
+    animation-delay:
+        1s;
+}
+
+
+.particle-3 {
+    right:
+        10%;
+
+    top:
+        22%;
+
+    animation-delay:
+        1.5s;
+}
+
+
+.particle-4 {
+    right:
+        17%;
+
+    bottom:
+        18%;
+
+    animation-delay:
+        2s;
+}
+
+
+.particle-5 {
+    left:
+        25%;
+
+    top:
+        12%;
+
+    animation-delay:
+        2.5s;
+}
+
+
+.particle-6 {
+    right:
+        27%;
+
+    top:
+        14%;
+
+    animation-delay:
+        3s;
+}
+
+
+@keyframes pageParticle {
+
+    from {
+        transform:
+            translateY(10px)
+            rotate(0deg)
+            scale(.8);
+
+        opacity:
+            .25;
+    }
+
+    to {
+        transform:
+            translateY(-25px)
+            rotate(25deg)
+            scale(1.25);
+
+        opacity:
+            .9;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .cake-card {
+
+        padding:
+            32px 15px;
+
+        border-radius:
+            28px;
+    }
+
+    .cake-scene {
+
+        height:
+            290px;
+    }
+
+    .cake {
+
+        transform:
+            scale(.82);
+    }
+
+    .cake-card h2 {
+
+        font-size:
+            42px;
+    }
+
+    .cake-message {
+
+        font-size:
+            23px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .cake-page {
+
+        padding:
+            25px 10px;
+    }
+
+    .cake-card {
+
+        padding:
+            28px 12px;
+    }
+
+    .cake-scene {
+
+        height:
+            265px;
+    }
+
+    .cake {
+
+        transform:
+            scale(.72);
+    }
+
+    .cake-card h2 {
+
+        font-size:
+            36px;
+    }
+
+    .cake-particle {
+
+        font-size:
+            16px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cake-card,
+    .cake,
+    .cake-glow,
+    .flame,
+    .cake-sparkle,
+    .cake-message,
+    .wish-btn,
+    .cake-particle {
+
+        animation:
+            none;
+    }
+
+}
+
+/* =====================================================
+   VAULT
+===================================================== */
+
+.vault {
+    width: 150px;
+    height: 150px;
+
+    margin:
+        15px auto 25px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    font-size: 65px;
+
+    box-shadow:
+        0 0 50px
+        rgba(157,124,255,.15);
+
+    animation:
+        vaultPulse 3s infinite;
+}
+
+
+/* =====================================================
+   ENVELOPE / LETTER
+===================================================== */
+
+.envelope {
+    width: 150px;
+    height: 105px;
+
+    margin:
+        10px auto 25px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 60px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    cursor: pointer;
+
+    transition:
+        transform .4s ease;
+}
+
+.envelope:hover {
+    transform:
+        translateY(-8px)
+        rotate(-2deg);
+}
+
+.letter-text {
+    max-width: 650px;
+
+    margin:
+        25px auto 0;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 23px;
+
+    line-height: 1.7;
+
+    white-space: pre-line;
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+#final {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,131,200,.12),
+            transparent 45%
+        );
+}
+
+.final-crown {
+    font-size: 85px;
+}
+
+.final-line {
+    max-width: 650px;
+
+    margin:
+        25px auto;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size: 25px;
+
+    line-height: 1.5;
+}
+
+.final-photos {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin:
+        30px auto;
+}
+
+.final-photos img {
+    width: 100px;
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.4);
+
+    transition: .3s;
+}
+
+.final-photos img:hover {
+    transform:
+        translateY(-10px)
+        rotate(0deg)
+        scale(1.06);
+}
+
+.signature {
+    color:
+        #ffc2e5;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 24px;
+}
+
+
+/* =====================================================
+   SOUND BUTTON
+===================================================== */
+
+.sound-btn {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    z-index: 500;
+
+    width: 45px;
+    height: 45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.07);
+
+    backdrop-filter:
+        blur(15px);
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes floatCrown {
+
+    0%,100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(2deg);
+    }
+}
+
+@keyframes slowPulse {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: .35;
+
+        transform:
+            scale(.7);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1.25);
+    }
+}
+
+@keyframes heartAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(.5)
+            translateY(20px);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            scale(1.15)
+            translateY(-40px);
+    }
+}
+
+@keyframes spinDisc {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+@keyframes candleGlow {
+
+    from {
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(255,210,100,.4)
+            );
+    }
+
+    to {
+        filter:
+            drop-shadow(
+                0 0 20px
+                rgba(255,210,100,.9)
+            );
+    }
+}
+
+@keyframes vaultPulse {
+
+    50% {
+        transform: scale(1.04);
+
+        box-shadow:
+            0 0 70px
+            rgba(157,124,255,.25);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .page {
+        padding:
+            20px 12px 65px;
+    }
+
+    .glass-card {
+        padding:
+            35px 18px;
+
+        border-radius:
+            24px;
+    }
+
+    .crown,
+    .final-crown {
+        font-size: 62px;
+    }
+
+    .memory-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 9px;
+    }
+
+    .notes-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .note-card {
+        min-height: 125px;
+    }
+
+    .note-card p {
+        font-size: 23px;
+    }
+
+    .counter {
+        gap: 7px;
+    }
+
+    .counter > div {
+        min-width: 72px;
+        padding: 12px 7px;
+    }
+
+    .counter strong {
+        font-size: 20px;
+    }
+
+    .constellation {
+        height: 330px;
+    }
+
+    .game-area {
+        height: 380px;
+    }
+
+    .letter-text {
+        font-size: 21px;
+    }
+
+    .final-photos img {
+        width: 72px;
+        height: 90px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .glass-card {
+        padding:
+            28px 15px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    h2 {
+        font-size: 39px;
+    }
+
+    .big-number {
+        font-size: 220px;
+    }
+
+    .memory-grid {
+        gap: 7px;
+    }
+
+    .game-area {
+        height: 330px;
+    }
+}

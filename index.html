@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>For My Princess 👑</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==============================
+         BACKGROUND
+    =============================== -->
+
+    <canvas id="starCanvas"></canvas>
+
+    <div id="hearts"></div>
+
+
+    <!-- ==============================
+         LOADING SCREEN
+    =============================== -->
+
+    <div id="loader">
+
+        <div class="loader-box">
+
+            <div class="loader-crown">
+                👑
+            </div>
+
+            <h2>
+                Creating something special...
+            </h2>
+
+            <p id="loaderText">
+                Preparing your little universe
+            </p>
+
+            <div class="loader-line">
+
+                <div id="loaderBar"></div>
+
+            </div>
+
+            <span id="loaderPercent">
+                0%
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         MAIN APP
+    =============================== -->
+
+    <main id="app">
+
+
+        <!-- ==========================
+             PAGE 1 — INTRO
+        =========================== -->
+
+        <section
+            class="page active"
+            id="intro"
+        >
+
+            <div class="glass-card">
+
+                <div class="crown">
+                    👑
+                </div>
+
+                <p class="small-title">
+                    A little secret for
+                </p>
+
+                <h1>
+                    My <span>Princess</span>
+                </h1>
+
+                <p class="description">
+
+                    Someone very special has a
+                    birthday coming...
+
+                    <br><br>
+
+                    But before the surprise,
+                    you have to pass a few
+                    little tests. 😈
+
+                </p>
+
+                <button
+                    class="main-btn"
+                    id="startBtn"
+                >
+                    Enter My Universe ✨
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 2 — TEASING
+        =========================== -->
+
+        <section
+            class="page"
+            id="teasing"
+        >
+
+            <div class="glass-card">
+
+                <span class="badge">
+                    WARNING ⚠️
+                </span>
+
+                <h2>
+                    Hey Princess...
+                </h2>
+
+                <p class="description">
+
+                    You really thought I would
+                    make this easy? 😏
+
+                    <br><br>
+
+                    First tell me...
+
+                    <br>
+
+                    <strong>
+                        Are you ready?
+                    </strong>
+
+                </p>
+
+                <div class="buttons">
+
+                    <button
+                        class="option-btn"
+                        data-next="challenge"
+                    >
+                        Yes 😌
+                    </button>
+
+                    <button
+                        class="option-btn annoying"
+                        id="noBtn"
+                    >
+                        No 😭
+                    </button>
+
+                </div>
+
+                <p id="teaseMessage"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 3 — CHALLENGE
+        =========================== -->
+
+        <section
+            class="page"
+            id="challenge"
+        >
+
+            <div class="glass-card">
+
+                <span class="badge">
+                    LEVEL 01
+                </span>
+
+                <h2>
+                    Let's see...
+                </h2>
+
+                <p id="question">
+                    Who is the real boss?
+                </p>
+
+                <div id="answers">
+
+                    <button
+                        class="option-btn"
+                        data-correct="false"
+                    >
+                        Me 😎
+                    </button>
+
+                    <button
+                        class="option-btn"
+                        data-correct="true"
+                    >
+                        Princess 👑
+                    </button>
+
+                    <button
+                        class="option-btn"
+                        data-correct="false"
+                    >
+                        Nobody 😂
+                    </button>
+
+                </div>
+
+                <p id="answerMessage"></p>
+
+                <button
+                    class="next-btn hidden"
+                    id="challengeNext"
+                >
+                    Continue →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 4 — FOUR YEARS
+        =========================== -->
+
+        <section
+            class="page"
+            id="fourYears"
+        >
+
+            <div class="glass-card">
+
+                <span class="badge">
+                    OUR STORY
+                </span>
+
+                <div class="big-number">
+                    4
+                </div>
+
+                <h2>
+                    Beautiful Years
+                </h2>
+
+                <p class="description">
+
+                    Four years.
+
+                    <br>
+
+                    Thousands of moments.
+
+                    <br>
+
+                    One beautiful story.
+
+                </p>
+
+                <div class="counter">
+
+                    <div>
+                        <strong id="days">
+                            0
+                        </strong>
+                        <span>Days</span>
+                    </div>
+
+                    <div>
+                        <strong id="hours">
+                            0
+                        </strong>
+                        <span>Hours</span>
+                    </div>
+
+                    <div>
+                        <strong id="minutes">
+                            0
+                        </strong>
+                        <span>Minutes</span>
+                    </div>
+
+                    <div>
+                        <strong id="seconds">
+                            0
+                        </strong>
+                        <span>Seconds</span>
+                    </div>
+
+                </div>
+
+                <button
+                    class="main-btn"
+                    data-go="memories"
+                >
+                    Open Our Memories 📸
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 5 — MEMORIES
+        =========================== -->
+
+        <section
+            class="page"
+            id="memories"
+        >
+
+            <div class="page-content">
+
+                <span class="badge">
+                    CHAPTERS
+                </span>
+
+                <h2>
+                    Our Memories
+                </h2>
+
+                <p class="description">
+                    Tap the memories...
+                </p>
+
+                <div
+                    class="memory-grid"
+                    id="memoryGrid"
+                ></div>
+
+                <p id="memoryProgress">
+                    0 / 5 memories discovered
+                </p>
+
+                <button
+                    class="main-btn hidden"
+                    id="memoryNext"
+                >
+                    Continue ❤️
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 6 — LOVE NOTES
+        =========================== -->
+
+        <section
+            class="page"
+            id="notes"
+        >
+
+            <div class="page-content">
+
+                <span class="badge">
+                    LITTLE THINGS I LOVE
+                </span>
+
+                <h2>
+                    Things I Love About You
+                </h2>
+
+                <div
+                    class="notes-grid"
+                    id="notesGrid"
+                ></div>
+
+                <p
+                    id="noteReveal"
+                    class="note-reveal"
+                ></p>
+
+                <button
+                    class="main-btn"
+                    data-go="constellation"
+                >
+                    Something is waiting ✨
+                </button>
+
+            </div>
+
+        </section>
+
+
+<!-- ==========================
+     PAGE 7 — CONSTELLATION
+=========================== -->
+
+<section
+    class="page"
+    id="constellation"
+>
+
+    <div class="page-content">
+
+        <!-- SECTION HEADER -->
+
+        <span class="badge">
+            FIND THE STARS ✨
+        </span>
+
+        <h2>
+            Our Little Universe 🌌
+        </h2>
+
+        <p>
+            Somewhere in this little universe,
+            six stars are waiting for you...
+        </p>
+
+
+        <!-- STAR PROGRESS -->
+
+        <p id="starProgress">
+            0 / 6
+        </p>
+
+
+        <!-- CONSTELLATION AREA -->
+
+        <div class="constellation">
+
+            <div id="stars"></div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <p id="starMessage"></p>
+
+
+        <!-- NEXT BUTTON -->
+
+        <button
+            class="main-btn hidden"
+            id="starNext"
+        >
+            Continue 🌌
+        </button>
+
+    </div>
+
+</section>
+
+
+        <!-- ==========================
+             PAGE 8 — MINI GAME
+        =========================== -->
+
+        <section
+            class="page"
+            id="game"
+        >
+
+            <div class="glass-card">
+
+                <span class="badge">
+                    MINI GAME
+                </span>
+
+                <h2>
+                    Catch My Hearts ❤️
+                </h2>
+
+                <p>
+                    Catch 5 hearts to unlock
+                    the next chapter.
+                </p>
+
+                <div
+                    id="gameArea"
+                    class="game-area"
+                ></div>
+
+                <p id="gameScore">
+                    0 / 5
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 9 — MUSIC
+        =========================== -->
+
+        <section
+            class="page"
+            id="musicPage"
+        >
+
+            <div class="glass-card">
+
+                <span class="badge">
+                    OUR SONG
+                </span>
+
+                <div
+                    id="musicDisc"
+                    class="music-disc"
+                >
+                    🎵
+                </div>
+
+                <h2>
+                    A Song For You
+                </h2>
+
+                <p>
+                    Press play...
+                </p>
+
+                <button
+                    class="main-btn"
+                    id="musicBtn"
+                >
+                    Play Music 🎵
+                </button>
+
+                <button
+                    class="main-btn"
+                    data-go="cake"
+                >
+                    Continue →
+                </button>
+
+                <audio
+                    id="music"
+                    loop
+                >
+                    <source
+                        src="music/song.mp3"
+                        type="audio/mpeg"
+                    >
+                </audio>
+
+            </div>
+
+        </section>
+
+
+<!-- ==========================
+     PAGE 10 — CAKE
+=========================== -->
+
+<section
+    class="page"
+    id="cake"
+>
+
+    <div class="cake-page">
+
+        <!-- Floating decorations -->
+        <div class="cake-particle particle-1">✦</div>
+        <div class="cake-particle particle-2">♡</div>
+        <div class="cake-particle particle-3">✧</div>
+        <div class="cake-particle particle-4">✨</div>
+        <div class="cake-particle particle-5">♡</div>
+        <div class="cake-particle particle-6">✦</div>
+
+        <div class="cake-card">
+
+            <span class="badge">
+                MAKE A WISH
+            </span>
+
+            <div class="cake-subtitle">
+                A little birthday magic for you ✨
+            </div>
+
+            <h2>
+                Happy Birthday,
+                <br>
+                <span>Princess 👑</span>
+            </h2>
+
+            <!-- CAKE -->
+            <div class="cake-scene">
+
+                <div class="cake-glow"></div>
+
+                <!-- Floating sparkles -->
+                <div class="cake-sparkle sparkle-1">✦</div>
+                <div class="cake-sparkle sparkle-2">✧</div>
+                <div class="cake-sparkle sparkle-3">✦</div>
+                <div class="cake-sparkle sparkle-4">♡</div>
+
+                <div class="cake">
+
+                    <!-- Candle -->
+                    <div class="candle">
+
+                        <div class="flame">
+                            <span></span>
+                        </div>
+
+                        <div class="candle-body">
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Top icing -->
+                    <div class="cake-top">
+
+                        <span class="icing-drip drip-1"></span>
+                        <span class="icing-drip drip-2"></span>
+                        <span class="icing-drip drip-3"></span>
+                        <span class="icing-drip drip-4"></span>
+
+                    </div>
+
+                    <!-- Cake body -->
+                    <div class="cake-body">
+
+                        <div class="cake-layer layer-1"></div>
+
+                        <div class="cake-layer layer-2"></div>
+
+                        <div class="cake-decoration">
+                            ♥ ♥ ♥
+                        </div>
+
+                    </div>
+
+                    <!-- Plate -->
+                    <div class="cake-plate"></div>
+
+                </div>
+
+            </div>
+
+            <p class="cake-message">
+                Close your eyes...
+                <br>
+                make a wish...
+                <br>
+                <span>
+                    and let the birthday magic begin. ✨
+                </span>
+            </p>
+
+            <button
+                class="main-btn wish-btn"
+                id="wishBtn"
+            >
+                Make My Wish ✨
+            </button>
+
+            <div class="wish-hint">
+                Something special is waiting after this... 👀
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- ==========================
+             PAGE 11 — SECRET
+        =========================== -->
+
+        <section
+            class="page"
+            id="secret"
+        >
+
+            <div class="glass-card">
+
+                <span class="badge">
+                    SECRET
+                </span>
+
+                <div class="vault">
+                    🔐
+                </div>
+
+                <h2>
+                    One Last Secret
+                </h2>
+
+                <p>
+                    Princess has unlocked
+                    something special.
+                </p>
+
+                <button
+                    class="main-btn"
+                    id="vaultBtn"
+                >
+                    Unlock ❤️
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 12 — LETTER
+        =========================== -->
+
+        <section
+            class="page"
+            id="letter"
+        >
+
+            <div class="glass-card">
+
+                <span class="badge">
+                    FROM MY HEART
+                </span>
+
+                <div
+                    id="envelope"
+                    class="envelope"
+                >
+                    💌
+                </div>
+
+                <h2>
+                    A Letter For My Princess
+                </h2>
+
+                <button
+                    class="main-btn"
+                    id="letterBtn"
+                >
+                    Open Letter 💌
+                </button>
+
+                <div
+                    id="letterText"
+                    class="letter-text"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PAGE 13 — FINAL
+        =========================== -->
+
+        <section
+            class="page"
+            id="final"
+        >
+
+            <div class="final-content">
+
+                <div class="final-crown">
+                    👑
+                </div>
+
+                <span class="badge">
+                    HAPPY BIRTHDAY
+                </span>
+
+                <h1>
+                    Happy Birthday,
+                    <span>Princess</span>
+                </h1>
+
+                <p class="final-line">
+
+                    Four years of memories...
+
+                    <br>
+
+                    and I still want
+                    thousands more.
+
+                    ❤️
+
+                </p>
+
+                <div
+                    id="finalPhotos"
+                    class="final-photos"
+                ></div>
+
+                <p class="signature">
+                    — From someone who
+                    calls you Princess ❤️
+                </p>
+
+                <button
+                    class="main-btn"
+                    id="replayBtn"
+                >
+                    Experience Again ✨
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- SOUND -->
+
+    <button
+        id="soundBtn"
+        class="sound-btn"
+    >
+        🔊
+    </button>
+
+    <script src="script.js"></script>
+   
+   <audio id="bgMusic" loop>
+    <source src="music/background.mp3" type="audio/mpeg">
+</audio>
+   
+</body>
+
+</html>
